@@ -390,7 +390,7 @@ angular.module('angularCharts').directive('acChart', [
           });
           linedata.push(d);
         });
-        var svg = d3.select(chartContainer[0]).append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom).append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+        var svg = d3.select(chartContainer[0]).append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom).append('g').attr('class', 'g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
         var padding = d3.max(yData) * 0.2;
         y.domain([
           d3.min(yData),

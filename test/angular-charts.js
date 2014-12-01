@@ -196,8 +196,6 @@ describe('angularCharts', function() {
     it('should add styles to the document', function() {
       var styleElements = document.querySelectorAll('style');
 
-      // First style element should be Angular's own styles (.ng-show, etc.).
-      expect(styleElements[0].innerHTML).toContain('.ng-hide{display:none');
 
       // Second style element should be Angular chart's styles.
       // They should be namespaced under the template's classes.

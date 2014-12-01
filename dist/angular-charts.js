@@ -319,7 +319,7 @@ angular.module('angularCharts').directive('acChart', [
           barGroups.selectAll('not-a-class').data(function (d) {
             return d.nicedata;
           }).enter().append('text').attr('x', function (d, i) {
-            return x0(i);
+            return x0(i)+x0.rangeBand()/2;
           }).attr('y', function (d) {
             return height - Math.abs(y(d.y) - y(0));
           }).text(function (d) {
@@ -468,9 +468,9 @@ angular.module('angularCharts').directive('acChart', [
               name: d.series,
               value: d.values[d.values.length - 1]
             };
-          }).attr('transform', function (d) {
+          }).attr('class', 'lineEnd').attr('transform', function (d) {
             return 'translate(' + getX(d.value.x) + ',' + y(d.value.y) + ')';
-          }).attr('x', 3).text(function (d) {
+          }).attr('x', 35).text(function (d) {
             return d.name;
           });
         }

@@ -481,6 +481,7 @@ angular.module('angularCharts').directive('acChart', function($templateCache, $c
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
+        .attr("class", "g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
       var padding = d3.max(yData) * 0.20;

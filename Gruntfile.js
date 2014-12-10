@@ -26,8 +26,8 @@ module.exports = function(grunt) {
         files: ['src/**/*.js', 'src/**/*.html', 'src/**/*.css'],
         tasks: ['ngmin', 'htmlmin', 'html2js', 'csso', 'css2js', 'concat', 'uglify', 'clean'],
         options: {
-          debounceDelay: 250,
-        },
+          debounceDelay: 250
+        }
       }
     },
     htmlmin: {
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
       main: {
         src: ['build/*.min.html'],
         dest: 'build/templates.js'
-      },
+      }
     },
 
     // CSS -> minfied CSS -> JS.

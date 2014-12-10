@@ -319,7 +319,7 @@ angular.module('angularCharts').directive('acChart', [
           barGroups.selectAll('not-a-class').data(function (d) {
             return d.nicedata;
           }).enter().append('text').attr('x', function (d, i) {
-            return x0(i);
+            return x0(i)+x0.rangeBand()/2;
           }).attr('y', function (d) {
             return height - Math.abs(y(d.y) - y(0));
           }).text(function (d) {
@@ -390,7 +390,7 @@ angular.module('angularCharts').directive('acChart', [
           });
           linedata.push(d);
         });
-        var svg = d3.select(chartContainer[0]).append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom).append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+        var svg = d3.select(chartContainer[0]).append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom).append('g').attr('class', 'g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
         var padding = d3.max(yData) * 0.2;
         y.domain([
           d3.min(yData),
@@ -444,7 +444,7 @@ angular.module('angularCharts').directive('acChart', [
             config.mouseout(d, d3.event);
             scope.$apply();
           }).on('mousemove', function (d) {
-            updateToolTip(d, d3.event);
+            updateToolTip(d3.event);
           }).on('click', function (d) {
             config.click(d, d3.event);
             scope.$apply();
@@ -468,9 +468,9 @@ angular.module('angularCharts').directive('acChart', [
               name: d.series,
               value: d.values[d.values.length - 1]
             };
-          }).attr('transform', function (d) {
+          }).attr('class', 'lineEnd').attr('transform', function (d) {
             return 'translate(' + getX(d.value.x) + ',' + y(d.value.y) + ')';
-          }).attr('x', 3).text(function (d) {
+          }).attr('x', 35).text(function (d) {
             return d.name;
           });
         }
@@ -726,7 +726,7 @@ angular.module('angularCharts').directive('acChart', [
             config.mouseout(d, d3.event);
             scope.$apply();
           }).on('mousemove', function (d) {
-            updateToolTip(d, d3.event);
+            updateToolTip(d3.event);
           }).on('click', function (d) {
             config.click(d, d3.event);
             scope.$apply();
@@ -908,7 +908,7 @@ angular.module('angularChartsTemplates', ['angularChartsTemplate_left', 'angular
 
 angular.module("angularChartsTemplate_left", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("angularChartsTemplate_left",
-    "<div class=\"angular-charts-template\"><div class=\"ac-title\" ng-bind=\"acConfig.title\"></div><div class=\"ac-legend\" ng-show=\"acConfig.legend.display\"><table><tr ng-repeat=\"l in legends\"><td><div class=\"ac-legend-box\" ng-attr-style=\"{background: l.color}\"></div></td><td ng-bind-html=\"l.title\"></td></tr></table></div><div class=\"ac-chart\"></div></div>");
+    "<div class=\"angular-charts-template\"><div class=\"ac-title\" ng-bind=\"acConfig.title\"></div><div class=\"ac-legend\" ng-show=\"acConfig.legend.display\"><table><tr ng-repeat=\"l in legends\"><td><div class=\"ac-legend-box\" ng-attr-style=\"{background: l.color };\"></div></td><td ng-bind-html=\"l.title\"></td></tr></table></div><div class=\"ac-chart\"></div></div>");
 }]);
 
 angular.module("angularChartsTemplate_right", []).run(["$templateCache", function($templateCache) {

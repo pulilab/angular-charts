@@ -444,7 +444,7 @@ angular.module('angularCharts').directive('acChart', [
             config.mouseout(d, d3.event);
             scope.$apply();
           }).on('mousemove', function (d) {
-            updateToolTip(d3.event);
+            updateToolTip(d, d3.event);
           }).on('click', function (d) {
             config.click(d, d3.event);
             scope.$apply();
@@ -726,7 +726,7 @@ angular.module('angularCharts').directive('acChart', [
             config.mouseout(d, d3.event);
             scope.$apply();
           }).on('mousemove', function (d) {
-            updateToolTip(d3.event);
+            updateToolTip(d, d3.event);
           }).on('click', function (d) {
             config.click(d, d3.event);
             scope.$apply();

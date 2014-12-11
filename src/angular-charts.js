@@ -382,7 +382,7 @@ angular.module('angularCharts').directive('acChart', function($templateCache, $c
           })
           .enter().append("text")
           .attr("x", function(d, i) {
-            return x0(i);
+            return x0(i)+x0.rangeBand()/2;
           })
           .attr("y", function(d) {
             return height - Math.abs(y(d.y) - y(0));
